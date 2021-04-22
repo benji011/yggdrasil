@@ -9,11 +9,11 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 
 import '~/assets/css/App.css'
 import { Google as LoginWithGoogle } from '~/components/login/Google'
+import { GitHub as LoginWithGitHub } from '~/components/login/GitHub'
+
+import { NavBar } from '~/components/header/NavBar'
 import { Signout } from '~/components/Signout'
 
-/**
- * TODO: Read these from environment as vars later.
- */
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -31,12 +31,15 @@ function App() {
   const [user] = useAuthState(auth)
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Chatroom</h1>
+      <header>
+        <NavBar />
         {user ? (
           <Signout auth={auth} />
         ) : (
-          <LoginWithGoogle firebase={firebase} auth={auth} />
+          <>
+            <LoginWithGoogle firebase={firebase} auth={auth} />
+            <LoginWithGitHub firebase={firebase} auth={auth} />
+          </>
         )}
       </header>
       <section>

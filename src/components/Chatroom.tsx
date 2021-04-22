@@ -35,18 +35,21 @@ export const Chatroom = (props: {
 
   return (
     <div>
-      {messages &&
-        messages.map((message: any) => (
-          <Message key={message.id} message={message} auth={auth} />
-        ))}
+      <div className="hero-body">
+        {messages &&
+          messages.map((message: any) => (
+            <Message key={message.id} message={message} auth={auth} />
+          ))}
+      </div>
       <form onSubmit={onSubmit}>
         <input
+          className="textarea is-primary"
           type="text"
           placeholder="type your message here"
           value={formMessage}
           onChange={(e) => setFormMessage(e.target.value)}
         />
-        <button>Send</button>
+        <button className="button is-primary">Send</button>
       </form>
     </div>
   )

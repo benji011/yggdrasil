@@ -1,3 +1,5 @@
+@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma-rtl.min.css';
+
 .App {
   text-align: center;
 }
@@ -38,4 +40,12 @@
 
 .App-section {
   background-color: #282c34;
+}
+
+.msg-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding: 0;
 }
