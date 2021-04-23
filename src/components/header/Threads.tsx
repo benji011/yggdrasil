@@ -37,7 +37,11 @@ export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
           <hr className="dropdown-divider" />
           {threads &&
             threads.map((thread: any) => (
-              <a key={thread.id} href="/" className="dropdown-item">
+              <a
+                key={thread.id}
+                href={`/room/${thread.id}`}
+                className="dropdown-item"
+              >
                 {thread.title}
               </a>
             ))}
