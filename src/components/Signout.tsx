@@ -5,11 +5,11 @@ export const Signout = (props: ISignout) => {
   return (
     auth.currentUser && (
       <span className="icon-text">
-        <button className="button is-primary " onClick={() => auth.signOut()}>
-          <span className="icon">
-            <i className="fas fa-sign-out-alt"></i>
-          </span>
+        <button className="button is-danger " onClick={() => auth.signOut()}>
           <span>Signout</span>
+          <span className="icon">
+            <i className="fas fa-sign-out-alt" />
+          </span>
         </button>
       </span>
     )
