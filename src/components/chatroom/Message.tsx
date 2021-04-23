@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
-import { IMessage } from '~/models/IMessage'
 
 import '~/assets/css/chatroom/message/message.css'
+import { IMessage } from '~/models/IMessage'
 
 export const Message = (props: {
   auth: firebase.auth.Auth

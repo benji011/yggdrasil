@@ -1,8 +1,8 @@
-import React, { FormEvent, useState } from 'react'
 import firebase from 'firebase/app'
+import React, { FormEvent, useState } from 'react'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 
 import { Message } from '~/components/chatroom/Message'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
 
 export const Chatroom = (props: {
   firestore: firebase.firestore.Firestore

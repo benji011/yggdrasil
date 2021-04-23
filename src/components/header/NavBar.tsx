@@ -1,8 +1,9 @@
-import React from 'react'
 import firebase from 'firebase/app'
-import { Signout } from '~/components/Signout'
-import logo from '~/assets/img/logo.png'
+import React from 'react'
+
 import '~/assets/css/navbar/navbar.css'
+import logo from '~/assets/img/logo.png'
+import { Signout } from '~/components/Signout'
 
 export const NavBar = (props: {
   user: firebase.User | null | undefined

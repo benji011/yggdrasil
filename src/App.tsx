@@ -1,17 +1,14 @@
-import React from 'react'
 import firebase from 'firebase/app'
-import 'firebase/firestore'
 import 'firebase/auth'
-
-import { Chatroom } from '~/components/Chatroom'
-import { Google as LoginWithGoogle } from '~/components/login/Google'
-import { GitHub as LoginWithGitHub } from '~/components/login/GitHub'
-
+import 'firebase/firestore'
+import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 import '~/assets/css/App.css'
-
+import { Chatroom } from '~/components/Chatroom'
 import { NavBar } from '~/components/header/NavBar'
+import { GitHub as LoginWithGitHub } from '~/components/login/GitHub'
+import { Google as LoginWithGoogle } from '~/components/login/Google'
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
