@@ -3,7 +3,12 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom'
 
 import '~/assets/css/App.css'
 import { Chatroom } from '~/components/Chatroom'
@@ -36,12 +41,16 @@ function App() {
       <Route exact path="/">
         {!user ? <Login firebase={firebase} auth={auth} /> : <Landing />}
       </Route>
-      <Switch>
-        <Route
-          path="/room/:id"
-          children={<Chatroom firestore={firestore} auth={auth} />}
-        />
-      </Switch>
+      {user ? (
+        <Switch>
+          <Route
+            path="/room/:id"
+            children={<Chatroom firestore={firestore} auth={auth} />}
+          />
+        </Switch>
+      ) : (
+        <Redirect to="/" />
+      )}
     </Router>
   )
 }

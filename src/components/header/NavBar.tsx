@@ -19,7 +19,7 @@ export const NavBar = (props: {
         <Link to="/">
           <img className="logo" src={logo} alt="logo" />
         </Link>
-        <div className="buttons">
+        <div className="buttons header-buttons">
           {user && <Threads firestore={firestore} />}
         </div>
       </div>

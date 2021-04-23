@@ -18,7 +18,7 @@ export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
         <span className="icon-text">
           <button
             className="button is-primary "
-            onClick={() => setShowThreads(!showThreads)}
+            onMouseEnter={() => setShowThreads(!showThreads)}
           >
             <span className="icon">
               <i className="fas fa-angle-down"></i>
@@ -42,6 +42,7 @@ export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
                 key={thread.id}
                 to={`/room/${thread.id}`}
                 className="dropdown-item thread-title"
+                onMouseLeave={() => setShowThreads(!showThreads)}
               >
                 <i className="fas fa-door-open door-icon" />
                 {thread.title}
