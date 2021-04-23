@@ -32,7 +32,6 @@ function App() {
         <header>
           <NavBar user={user} auth={auth} firestore={firestore} />
         </header>
-        <section>{!user && <h1>Home</h1>}</section>
       </div>
       <Route exact path="/">
         {!user ? <Login firebase={firebase} auth={auth} /> : <Landing />}
