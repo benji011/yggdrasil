@@ -15,12 +15,12 @@ export const Google = (props: { firebase: any; auth: firebase.auth.Auth }) => {
   }
   return (
     <p className="control">
-      <a
+      <button
         className="button btn-block btn-social btn-google login-button"
         onClick={googleSigninPrompt}
       >
         <i className="fa fa-google social-icon"></i> Sign in with Google
-      </a>
+      </button>
     </p>
   )
 }

@@ -12,8 +12,12 @@ export const Message = (props: {
   const text: string = message?.text
   const photoURL: string = message?.photoURL
   const currentUser: any = auth?.currentUser
-  const messageClass = uid === currentUser.uid ? 'is-primary' : 'is-info'
-  const profileImgClass = uid === currentUser.uid ? 'current-user' : 'friend'
+  const messageClass: string =
+    uid === currentUser.uid ? 'is-primary' : 'is-info'
+  const profileImgClass: string =
+    uid === currentUser.uid ? 'current-user' : 'friend'
+  const displayName: string =
+    uid === currentUser.uid ? 'Me' : message?.displayName
 
   return (
     <span className={`message ${messageClass}`}>
@@ -24,7 +28,10 @@ export const Message = (props: {
         }
         alt={`${uid}`}
       />
-      <p>{text}</p>
+      <p>
+        <strong>{`${displayName}: `}</strong>
+        {text}
+      </p>
     </span>
   )
 }

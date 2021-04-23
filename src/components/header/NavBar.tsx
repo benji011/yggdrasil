@@ -1,6 +1,8 @@
 import React from 'react'
 import firebase from 'firebase/app'
 import { Signout } from '~/components/Signout'
+import logo from '~/assets/img/logo.png'
+import '~/assets/css/navbar/navbar.css'
 
 export const NavBar = (props: {
   user: firebase.User | null | undefined
@@ -10,14 +12,7 @@ export const NavBar = (props: {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
-          <img
-            src="https://bulma.io/images/bulma-logo.png"
-            width="112"
-            height="28"
-            alt="bulmalogo"
-          />
-        </a>
+        <img className="logo" src={logo} alt="logo" />
         <div className="buttons">{user ? <Signout auth={auth} /> : <></>}</div>
       </div>
     </nav>

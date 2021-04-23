@@ -17,12 +17,12 @@ export const GitHub = (props: { firebase: any; auth: firebase.auth.Auth }) => {
   }
   return (
     <p className="control">
-      <a
+      <button
         className="button btn-block btn-social btn-github login-button"
         onClick={githubSigninPrompt}
       >
         <i className="fa fa-github social-icon"></i> Sign in with Github
-      </a>
+      </button>
     </p>
   )
 }
