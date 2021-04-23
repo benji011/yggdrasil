@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-export const Threads = () => {
+export const Threads = (props: { threads: any }) => {
+  const { threads } = props
   const [showThreads, setShowThreads] = useState(false)
 
   return (
@@ -22,20 +23,17 @@ export const Threads = () => {
         <div className="dropdown-content">
           <div className="dropdown-item">
             <p>
-              You can insert <strong>any type of content</strong> within the
-              dropdown menu.
+              <i className="fas fa-info-circle" /> You can create{' '}
+              <strong>any number</strong> of chatrooms. Just don't go crazy
             </p>
           </div>
           <hr className="dropdown-divider" />
-          <div className="dropdown-item">
-            <p>
-              You simply need to use a <code>&lt;div&gt;</code> instead.
-            </p>
-          </div>
-          <hr className="dropdown-divider" />
-          <a href="/" className="dropdown-item">
-            This is a link
-          </a>
+          {threads &&
+            threads.map((thread: any) => (
+              <a key={thread.id} href="/" className="dropdown-item">
+                {thread.title}
+              </a>
+            ))}
         </div>
       </div>
     </div>
