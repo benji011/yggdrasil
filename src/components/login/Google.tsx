@@ -13,5 +13,14 @@ export const Google = (props: { firebase: any; auth: firebase.auth.Auth }) => {
     const provider = new firebase.auth.GoogleAuthProvider()
     auth.signInWithPopup(provider)
   }
-  return <button onClick={googleSigninPrompt}>Sign in with Google</button>
+  return (
+    <p className="control">
+      <a
+        className="button btn-block btn-social btn-google login-button"
+        onClick={googleSigninPrompt}
+      >
+        <i className="fa fa-google social-icon"></i> Sign in with Google
+      </a>
+    </p>
+  )
 }

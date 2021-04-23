@@ -16,9 +16,10 @@ export const Chatroom = (props: {
   const [formMessage, setFormMessage] = useState('')
 
   /**
-   * Send message
+   * Send message by adding to the 'messages' collection over
+   * on firebase
    *
-   * @param e
+   * @param e FormEvent type used to prevent page from refreshing
    */
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -31,6 +32,7 @@ export const Chatroom = (props: {
       uid,
       photoURL,
     })
+    setFormMessage('')
   }
 
   return (

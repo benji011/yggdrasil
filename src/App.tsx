@@ -4,15 +4,14 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 import { Chatroom } from '~/components/Chatroom'
+import { Google as LoginWithGoogle } from '~/components/login/Google'
+import { GitHub as LoginWithGitHub } from '~/components/login/GitHub'
 
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 import '~/assets/css/App.css'
-import { Google as LoginWithGoogle } from '~/components/login/Google'
-import { GitHub as LoginWithGitHub } from '~/components/login/GitHub'
 
 import { NavBar } from '~/components/header/NavBar'
-import { Signout } from '~/components/Signout'
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -32,18 +31,18 @@ function App() {
   return (
     <div className="App">
       <header>
-        <NavBar />
-        {user ? (
-          <Signout auth={auth} />
-        ) : (
-          <>
-            <LoginWithGoogle firebase={firebase} auth={auth} />
-            <LoginWithGitHub firebase={firebase} auth={auth} />
-          </>
-        )}
+        <NavBar user={user} auth={auth} />
       </header>
       <section>
         {user && <Chatroom firestore={firestore} auth={auth} />}
+        {!user && (
+          <div role="group" className="btn-group">
+            <div className="field is-grouped">
+              <LoginWithGoogle firebase={firebase} auth={auth} />
+              <LoginWithGitHub firebase={firebase} auth={auth} />
+            </div>
+          </div>
+        )}
       </section>
     </div>
   )

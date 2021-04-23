@@ -12,11 +12,11 @@ export const Message = (props: {
   const text: string = message?.text
   const photoURL: string = message?.photoURL
   const currentUser: any = auth?.currentUser
-  const messageClass = uid === currentUser.uid ? 'is-success' : 'is-info'
+  const messageClass = uid === currentUser.uid ? 'is-primary' : 'is-info'
   const profileImgClass = uid === currentUser.uid ? 'current-user' : 'friend'
 
   return (
-    <span className={`tag is-medium ${messageClass}`}>
+    <span className={`message ${messageClass}`}>
       <img
         className={`profile-img ${profileImgClass}`}
         src={

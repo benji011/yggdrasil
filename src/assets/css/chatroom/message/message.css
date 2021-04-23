@@ -1,21 +1,35 @@
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.is-primary {
+  flex-direction: row-reverse !important;
+}
+
+.is-primary p {
+  color: rgb(70, 70, 70) !important;
+  align-self: flex-end !important;
+}
+.received p {
+  color: rgb(70, 70, 70) !important;
+}
+
 .profile-img {
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  margin-top: 10px;
+  margin: 2px 5px;
 }
 
-.friend {
-  float: left;
+form {
+  bottom: 0;
+  width: 100%;
+  max-width: 90vw;
+  display: flex;
 }
 
-.current-user {
-  float: right;
-}
-
-.tag {
-  display: block !important;
-  margin-top: 10px;
-  width: 600px;
-  height: 80px !important;
+form button {
+  width: 20%;
+  height: 128px !important;
 }
