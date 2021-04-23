@@ -1,14 +1,13 @@
 import firebase from 'firebase/app'
 import React, { useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/threads.css'
 
 export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
   const { firestore } = props
-  const threadsRef = firestore.collection(
-    '45dcf07c-a3f8-11eb-bcbc-0242ac130002'
-  )
+  const threadsRef = firestore.collection('threads')
   const threadsQuery = threadsRef.orderBy('createdAt').limit(25)
   const [threads] = useCollectionData(threadsQuery, { idField: 'id' })
   const [showThreads, setShowThreads] = useState(false)
@@ -39,14 +38,14 @@ export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
           <hr className="dropdown-divider" />
           {threads &&
             threads.map((thread: any) => (
-              <a
+              <Link
                 key={thread.id}
-                href={`/room/${thread.id}`}
+                to={`/room/${thread.id}`}
                 className="dropdown-item thread-title"
               >
                 <i className="fas fa-door-open door-icon" />
                 {thread.title}
-              </a>
+              </Link>
             ))}
         </div>
       </div>

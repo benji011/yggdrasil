@@ -1,9 +1,11 @@
 import firebase from 'firebase/app'
 import React, { FormEvent, useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { useParams } from 'react-router-dom'
 
 import '~/assets/css/chatroom/message/message.css'
 import { Message } from '~/components/chatroom/Message'
+import { IThread } from '~/models/IThread'
 
 export const Chatroom = (props: {
   firestore: firebase.firestore.Firestore
@@ -15,6 +17,7 @@ export const Chatroom = (props: {
   const [messages] = useCollectionData(query, { idField: 'id' })
 
   const [formMessage, setFormMessage] = useState('')
+  const { id } = useParams<IThread>()
 
   /**
    * Send message by adding to the 'messages' collection over
@@ -32,9 +35,20 @@ export const Chatroom = (props: {
     await messagesRef.add({
       text: msg,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      threadId: id,
       displayName,
       uid,
       photoURL,
+    })
+  }
+
+  /**
+   * Return filtered messages based on thread
+   * @param message
+   */
+  const getFilteredMessages = (messages: any) => {
+    return messages.filter(function (message: any) {
+      return message?.threadId === id
     })
   }
 
@@ -42,7 +56,7 @@ export const Chatroom = (props: {
     <div>
       <div className="hero-body">
         {messages &&
-          messages.map((message: any) => (
+          getFilteredMessages(messages).map((message: any) => (
             <Message key={message.id} message={message} auth={auth} />
           ))}
       </div>

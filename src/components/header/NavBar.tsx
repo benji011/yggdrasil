@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/navbar.css'
 import logo from '~/assets/img/logo.png'
@@ -15,7 +16,9 @@ export const NavBar = (props: {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <img className="logo" src={logo} alt="logo" />
+        <Link to="/">
+          <img className="logo" src={logo} alt="logo" />
+        </Link>
         <div className="buttons">
           {user && <Threads firestore={firestore} />}
         </div>

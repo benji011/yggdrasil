@@ -3,12 +3,13 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import '~/assets/css/App.css'
 import { Chatroom } from '~/components/Chatroom'
+import { Landing } from '~/components/Landing'
 import { NavBar } from '~/components/header/NavBar'
-import { GitHub as LoginWithGitHub } from '~/components/login/GitHub'
-import { Google as LoginWithGoogle } from '~/components/login/Google'
+import { Login } from '~/components/login/Login'
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -26,22 +27,23 @@ const firestore = firebase.firestore()
 function App() {
   const [user] = useAuthState(auth)
   return (
-    <div className="App">
-      <header>
-        <NavBar user={user} auth={auth} firestore={firestore} />
-      </header>
-      <section>
-        {user && <Chatroom firestore={firestore} auth={auth} />}
-        {!user && (
-          <div role="group" className="btn-group">
-            <div className="field is-grouped">
-              <LoginWithGoogle firebase={firebase} auth={auth} />
-              <LoginWithGitHub firebase={firebase} auth={auth} />
-            </div>
-          </div>
-        )}
-      </section>
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+          <NavBar user={user} auth={auth} firestore={firestore} />
+        </header>
+        <section>{!user && <h1>Home</h1>}</section>
+      </div>
+      <Route exact path="/">
+        {!user ? <Login firebase={firebase} auth={auth} /> : <Landing />}
+      </Route>
+      <Switch>
+        <Route
+          path="/room/:id"
+          children={<Chatroom firestore={firestore} auth={auth} />}
+        />
+      </Switch>
+    </Router>
   )
 }
 
