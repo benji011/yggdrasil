@@ -5,4 +5,5 @@ export interface IMessage {
   uid: string
   photoURL: string
   createdAt: string
+  threadId: string
 }
