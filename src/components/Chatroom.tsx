@@ -23,16 +23,16 @@ export const Chatroom = (props: {
    */
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    const uid = auth.currentUser?.uid
-    const photoURL = auth.currentUser?.photoURL
-
+    const uid: string | undefined = auth.currentUser?.uid
+    const photoURL: string | undefined | null = auth.currentUser?.photoURL
+    const msg: string = formMessage
+    setFormMessage('')
     await messagesRef.add({
-      text: formMessage,
+      text: msg,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
       photoURL,
     })
-    setFormMessage('')
   }
 
   return (
