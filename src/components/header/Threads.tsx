@@ -2,6 +2,8 @@ import firebase from 'firebase/app'
 import React, { useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 
+import '~/assets/css/navbar/threads.css'
+
 export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
   const { firestore } = props
   const threadsRef = firestore.collection(
@@ -12,7 +14,7 @@ export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
   const [showThreads, setShowThreads] = useState(false)
 
   return (
-    <div className={`dropdown ${showThreads ? 'is-active' : ''}`}>
+    <div className={`nav-window dropdown ${showThreads ? 'is-active' : ''}`}>
       <div className="dropdown-trigger">
         <span className="icon-text">
           <button
@@ -30,8 +32,8 @@ export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
         <div className="dropdown-content">
           <div className="dropdown-item">
             <p>
-              <i className="fas fa-info-circle" /> You can create{' '}
-              <strong>any number</strong> of chatrooms. Just don't go crazy
+              <i className="fas fa-info-circle" /> You can create up to{' '}
+              <strong>max 2 rooms</strong>.
             </p>
           </div>
           <hr className="dropdown-divider" />
@@ -40,8 +42,9 @@ export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
               <a
                 key={thread.id}
                 href={`/room/${thread.id}`}
-                className="dropdown-item"
+                className="dropdown-item thread-title"
               >
+                <i className="fas fa-door-open door-icon" />
                 {thread.title}
               </a>
             ))}
