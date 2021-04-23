@@ -1,7 +1,14 @@
+import firebase from 'firebase/app'
 import React, { useState } from 'react'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 
-export const Threads = (props: { threads: any }) => {
-  const { threads } = props
+export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
+  const { firestore } = props
+  const threadsRef = firestore.collection(
+    '45dcf07c-a3f8-11eb-bcbc-0242ac130002'
+  )
+  const threadsQuery = threadsRef.orderBy('createdAt').limit(25)
+  const [threads] = useCollectionData(threadsQuery, { idField: 'id' })
   const [showThreads, setShowThreads] = useState(false)
 
   return (

@@ -1,15 +1,19 @@
 import firebase from 'firebase/app'
 import React, { FormEvent, useState } from 'react'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 
 import '~/assets/css/chatroom/message/message.css'
 import { Message } from '~/components/chatroom/Message'
 
 export const Chatroom = (props: {
-  messages: any
-  messagesRef: any
+  firestore: firebase.firestore.Firestore
   auth: firebase.auth.Auth
 }) => {
-  const { messages, messagesRef, auth } = props
+  const { firestore, auth } = props
+  const messagesRef = firestore.collection('messages')
+  const query = messagesRef.orderBy('createdAt').limit(25)
+  const [messages] = useCollectionData(query, { idField: 'id' })
+
   const [formMessage, setFormMessage] = useState('')
 
   /**
