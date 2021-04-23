@@ -21,7 +21,7 @@ export const GitHub = (props: { firebase: any; auth: firebase.auth.Auth }) => {
         className="button btn-block btn-social btn-github login-button"
         onClick={githubSigninPrompt}
       >
-        <i className="fa fa-github social-icon"></i> Sign in with Github
+        <i className="fab fa-github social-icon"></i> Sign in with Github
       </button>
     </p>
   )

@@ -33,3 +33,7 @@ form button {
   width: 20%;
   height: 128px !important;
 }
+
+.send-icon {
+  width: 80px !important;
+}
