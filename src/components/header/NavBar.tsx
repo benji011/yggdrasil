@@ -26,6 +26,13 @@ export const NavBar = (props: {
       <div className="navbar-menu">
         <div className="navbar-start">
           <div className="navbar-item">
+            <Link to="/">
+              <h4>
+                <i className="fas fa-home" /> Home
+              </h4>
+            </Link>
+          </div>
+          <div className="navbar-item">
             {user && (
               <h4>
                 Welcome back, <strong>{user.displayName}!</strong>

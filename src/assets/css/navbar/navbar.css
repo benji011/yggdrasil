@@ -11,3 +11,7 @@
 .header-buttons {
   margin-right: 10px;
 }
+
+.navbar-item > a {
+  color: #4a4a4a !important;
+}
