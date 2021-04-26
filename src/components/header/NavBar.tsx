@@ -11,8 +11,9 @@ export const NavBar = (props: {
   firestore: firebase.firestore.Firestore
   user: firebase.User | null | undefined
   auth: firebase.auth.Auth
+  setThreadData: Function
 }) => {
-  const { firestore, user, auth } = props
+  const { firestore, user, auth, setThreadData } = props
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -20,7 +21,9 @@ export const NavBar = (props: {
           <img className="logo" src={logo} alt="logo" />
         </Link>
         <div className="buttons header-buttons">
-          {user && <Threads firestore={firestore} />}
+          {user && (
+            <Threads firestore={firestore} setThreadData={setThreadData} />
+          )}
         </div>
       </div>
       <div className="navbar-menu">

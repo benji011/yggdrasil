@@ -10,8 +10,9 @@ import { IThread } from '~/models/IThread'
 export const Chatroom = (props: {
   firestore: firebase.firestore.Firestore
   auth: firebase.auth.Auth
+  threadData: any
 }) => {
-  const { firestore, auth } = props
+  const { firestore, auth, threadData } = props
   const messagesRef = firestore.collection('messages')
   const query = messagesRef.orderBy('createdAt').limit(25)
   const [messages] = useCollectionData(query, { idField: 'id' })
@@ -47,6 +48,7 @@ export const Chatroom = (props: {
    * @param message
    */
   const getFilteredMessages = (messages: any) => {
+    console.log(threadData)
     return messages.filter(function (message: any) {
       return message?.threadId === id
     })
@@ -54,6 +56,12 @@ export const Chatroom = (props: {
 
   return (
     <div>
+      <section className="hero is-primary">
+        <div className="hero-body">
+          <p className="title">{threadData.title}</p>
+          <p className="subtitle">Primary subtitle</p>
+        </div>
+      </section>
       <div className="hero-body">
         {messages &&
           getFilteredMessages(messages).map((message: any) => (

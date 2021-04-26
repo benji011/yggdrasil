@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/threads.css'
 
-export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
-  const { firestore } = props
+export const Threads = (props: {
+  firestore: firebase.firestore.Firestore
+  setThreadData: Function
+}) => {
+  const { firestore, setThreadData } = props
   const threadsRef = firestore.collection('threads')
   const threadsQuery = threadsRef.orderBy('createdAt').limit(25)
   const [threads] = useCollectionData(threadsQuery, { idField: 'id' })
@@ -39,6 +42,7 @@ export const Threads = (props: { firestore: firebase.firestore.Firestore }) => {
           {threads &&
             threads.map((thread: any) => (
               <Link
+                onClick={() => setThreadData(thread)}
                 key={thread.id}
                 to={`/room/${thread.id}`}
                 className="dropdown-item thread-title"

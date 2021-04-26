@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import {
   BrowserRouter as Router,
@@ -31,11 +31,17 @@ const firestore = firebase.firestore()
 
 function App() {
   const [user] = useAuthState(auth)
+  const [threadData, setThreadData] = useState([{ createdAt: '', title: '' }])
   return (
     <Router>
       <div className="App">
         <header>
-          <NavBar user={user} auth={auth} firestore={firestore} />
+          <NavBar
+            user={user}
+            auth={auth}
+            firestore={firestore}
+            setThreadData={setThreadData}
+          />
         </header>
       </div>
       <Route exact path="/">
@@ -45,7 +51,13 @@ function App() {
         <Switch>
           <Route
             path="/room/:id"
-            children={<Chatroom firestore={firestore} auth={auth} />}
+            children={
+              <Chatroom
+                firestore={firestore}
+                auth={auth}
+                threadData={threadData}
+              />
+            }
           />
         </Switch>
       ) : (
