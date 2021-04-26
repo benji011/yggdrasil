@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import '~/assets/css/chatroom/message/message.css'
 import { Message } from '~/components/chatroom/Message'
 import { IThread } from '~/models/IThread'
+import { transformThreadDate } from '~/utils/transformer'
 
 export const Chatroom = (props: {
   firestore: firebase.firestore.Firestore
@@ -48,7 +49,6 @@ export const Chatroom = (props: {
    * @param message
    */
   const getFilteredMessages = (messages: any) => {
-    console.log(threadData)
     return messages.filter(function (message: any) {
       return message?.threadId === id
     })
@@ -59,7 +59,9 @@ export const Chatroom = (props: {
       <section className="hero is-primary">
         <div className="hero-body">
           <p className="title">{threadData.title}</p>
-          <p className="subtitle">Primary subtitle</p>
+          <p className="subtitle">
+            {transformThreadDate(threadData.createdAt.seconds)}
+          </p>
         </div>
       </section>
       <div className="hero-body">
