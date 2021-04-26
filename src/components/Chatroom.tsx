@@ -36,7 +36,10 @@ export const Chatroom = (props: {
     setFormMessage('')
     await messagesRef.add({
       text: msg,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      createdAt: {
+        nanoseconds: 0,
+        seconds: parseInt((new Date().getTime() / 1000).toString()),
+      },
       threadId: id,
       displayName,
       uid,
