@@ -6,13 +6,14 @@ import { useParams } from 'react-router-dom'
 import '~/assets/css/chatroom/message/message.css'
 import { Message } from '~/components/chatroom/Message'
 import { IThread } from '~/models/IThread'
+import { IThreadData } from '~/models/IThreadData'
 import { scrollToBottom } from '~/utils/helper'
 import { transformThreadDate } from '~/utils/transformer'
 
 export const Chatroom = (props: {
   firestore: firebase.firestore.Firestore
   auth: firebase.auth.Auth
-  threadData: any
+  threadData: IThreadData
 }) => {
   const { firestore, auth, threadData } = props
   const messagesRef = firestore.collection('messages')

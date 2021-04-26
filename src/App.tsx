@@ -31,7 +31,10 @@ const firestore = firebase.firestore()
 
 function App() {
   const [user] = useAuthState(auth)
-  const [threadData, setThreadData] = useState([{ createdAt: '', title: '' }])
+  const [threadData, setThreadData] = useState({
+    createdAt: { nanoseconds: 0, seconds: 0 },
+    title: '',
+  })
   return (
     <Router>
       <div className="App">
