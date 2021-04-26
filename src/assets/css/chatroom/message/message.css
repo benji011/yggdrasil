@@ -7,10 +7,6 @@
   flex-direction: row-reverse !important;
 }
 
-.is-primary p {
-  color: rgb(70, 70, 70) !important;
-  align-self: flex-end !important;
-}
 .received p {
   color: rgb(70, 70, 70) !important;
 }
@@ -36,4 +32,9 @@ form button {
 
 .send-icon {
   width: 80px !important;
+}
+
+.messages-window {
+  max-height: 50vh;
+  overflow: scroll;
 }
