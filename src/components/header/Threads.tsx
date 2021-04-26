@@ -4,6 +4,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/threads.css'
+import { scrollToBottom } from '~/utils/helper'
 
 export const Threads = (props: {
   firestore: firebase.firestore.Firestore
@@ -14,6 +15,16 @@ export const Threads = (props: {
   const threadsQuery = threadsRef.orderBy('createdAt').limit(25)
   const [threads] = useCollectionData(threadsQuery, { idField: 'id' })
   const [showThreads, setShowThreads] = useState(false)
+
+  /**
+   * Redirect user to chatroom
+   *
+   * @param thread A thread object
+   */
+  const goToChatroom = (thread: any) => {
+    scrollToBottom()
+    setThreadData(thread)
+  }
 
   return (
     <div className={`nav-window dropdown ${showThreads ? 'is-active' : ''}`}>
@@ -42,7 +53,7 @@ export const Threads = (props: {
           {threads &&
             threads.map((thread: any) => (
               <Link
-                onClick={() => setThreadData(thread)}
+                onClick={() => goToChatroom(thread)}
                 key={thread.id}
                 to={`/room/${thread.id}`}
                 className="dropdown-item thread-title"

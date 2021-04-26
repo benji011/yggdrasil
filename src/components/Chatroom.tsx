@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import '~/assets/css/chatroom/message/message.css'
 import { Message } from '~/components/chatroom/Message'
 import { IThread } from '~/models/IThread'
+import { scrollToBottom } from '~/utils/helper'
 import { transformThreadDate } from '~/utils/transformer'
 
 export const Chatroom = (props: {
@@ -45,6 +46,7 @@ export const Chatroom = (props: {
       uid,
       photoURL,
     })
+    scrollToBottom()
   }
 
   /**
@@ -59,7 +61,7 @@ export const Chatroom = (props: {
 
   return (
     <div>
-      <section className="hero is-primary">
+      <section className="hero is-primary is-small">
         <div className="hero-body">
           <p className="title">{threadData.title}</p>
           <p className="subtitle">
@@ -67,7 +69,7 @@ export const Chatroom = (props: {
           </p>
         </div>
       </section>
-      <div className="hero-body">
+      <div id="messages" className="hero-body messages-window">
         {messages &&
           getFilteredMessages(messages).map((message: any) => (
             <Message key={message.id} message={message} auth={auth} />
