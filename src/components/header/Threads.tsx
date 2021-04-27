@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/threads.css'
 import { IThread } from '~/models/IThread'
-import { IThreadData } from '~/models/IThreadData'
 import { scrollToBottom } from '~/utils/helper'
 
 export const Threads = (props: {
@@ -20,7 +19,7 @@ export const Threads = (props: {
     .orderBy('createdAt')
     .limit(25)
   const [threads]: [
-    IThreadData[] | undefined,
+    IThread[] | undefined,
     boolean,
     firebase.FirebaseError | undefined
   ] = useCollectionData(threadsQuery, {
@@ -63,7 +62,7 @@ export const Threads = (props: {
           </div>
           <hr className="dropdown-divider" />
           {threads &&
-            threads.map((thread: IThreadData) => (
+            threads.map((thread: IThread) => (
               <Link
                 onClick={() => goToChatroom(thread)}
                 key={thread.id}

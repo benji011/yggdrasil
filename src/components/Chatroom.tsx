@@ -7,14 +7,13 @@ import '~/assets/css/chatroom/message/message.css'
 import { Message } from '~/components/chatroom/Message'
 import { IMessage } from '~/models/IMessage'
 import { IThread } from '~/models/IThread'
-import { IThreadData } from '~/models/IThreadData'
 import { scrollToBottom } from '~/utils/helper'
 import { transformThreadDate } from '~/utils/transformer'
 
 export const Chatroom = (props: {
   firestore: firebase.firestore.Firestore
   auth: firebase.auth.Auth
-  threadData: IThreadData
+  threadData: IThread
 }) => {
   const { firestore, auth, threadData } = props
   const messagesRef: firebase.firestore.CollectionReference = firestore.collection(
@@ -30,7 +29,7 @@ export const Chatroom = (props: {
   ] = useCollectionData(query, { idField: 'id' })
 
   const [formMessage, setFormMessage] = useState('')
-  const { id } = useParams<IThread>()
+  const { id } = useParams<{ id: string }>()
 
   /**
    * Send message by adding to the 'messages' collection over
