@@ -2,6 +2,8 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
+import { LoginButton } from '~/components/common/LoginButton'
+
 /**
  * Login with Google
  * @param props
@@ -15,12 +17,12 @@ export const Google = (props: { auth: firebase.auth.Auth }) => {
   }
   return (
     <p className="control">
-      <button
+      <LoginButton
         className="button btn-block btn-social btn-google login-button"
+        text="Sign in with Google"
+        icon="fab fa-google social-icon"
         onClick={googleSigninPrompt}
-      >
-        <i className="fab fa-google social-icon"></i> Sign in with Google
-      </button>
+      />
     </p>
   )
 }

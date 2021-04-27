@@ -4,6 +4,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/threads.css'
+import { Button } from '~/components/common/Button'
 import { IThread } from '~/models/IThread'
 import { scrollToBottom } from '~/utils/helper'
 
@@ -36,6 +37,15 @@ export const Threads = (props: {
   const goToChatroom = (thread: IThread) => {
     scrollToBottom()
     setThreadData(thread)
+    setShowThreads(!showThreads)
+  }
+
+  /**
+   * Add new chatroom
+   */
+  const addNewChatroom = () => {
+    setShowModal(true)
+    setShowThreads(!showThreads)
   }
 
   return (
@@ -61,12 +71,12 @@ export const Threads = (props: {
               <strong>max 2 rooms</strong>.
             </p>
             <hr className="dropdown-divider" />
-            <button
-              className="button is-success is-light"
-              onClick={() => setShowModal(true)}
-            >
-              Add chatroom
-            </button>
+            <Button
+              className="button is-primary"
+              text="Add"
+              icon="fas fa-plus-square"
+              onClick={addNewChatroom}
+            />
           </div>
           <hr className="dropdown-divider" />
           {threads &&

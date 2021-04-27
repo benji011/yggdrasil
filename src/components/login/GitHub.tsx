@@ -3,6 +3,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 
 import '~/assets/css/login/icon.css'
+import { LoginButton } from '~/components/common/LoginButton'
 
 /**
  * Login with GitHub
@@ -17,12 +18,12 @@ export const GitHub = (props: { auth: firebase.auth.Auth }) => {
   }
   return (
     <p className="control">
-      <button
+      <LoginButton
         className="button btn-block btn-social btn-github login-button"
+        text="Sign in with GitHub"
+        icon="fab fa-github social-icon"
         onClick={githubSigninPrompt}
-      >
-        <i className="fab fa-github social-icon"></i> Sign in with Github
-      </button>
+      />
     </p>
   )
 }
