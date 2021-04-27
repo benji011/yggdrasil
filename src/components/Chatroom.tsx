@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 
 import '~/assets/css/chatroom/message/message.css'
 import { Message } from '~/components/chatroom/Message'
+import { Button } from '~/components/common/Button'
 import { IMessage } from '~/models/IMessage'
 import { IThread } from '~/models/IThread'
 import { scrollToBottom } from '~/utils/helper'
@@ -94,9 +95,10 @@ export const Chatroom = (props: {
           value={formMessage}
           onChange={(e) => setFormMessage(e.target.value)}
         />
-        <button className="button is-primary">
-          <i className="far fa-paper-plane send-icon" />
-        </button>
+        <Button
+          className="button is-primary"
+          icon="far fa-paper-plane send-icon"
+        />
       </form>
     </div>
   )
