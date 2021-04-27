@@ -24,7 +24,7 @@ export const Chatroom = (props: {
     .orderBy('createdAt')
     .limit(25)
   const [messages]: [
-    any[] | undefined,
+    IMessage[] | undefined,
     boolean,
     firebase.FirebaseError | undefined
   ] = useCollectionData(query, { idField: 'id' })

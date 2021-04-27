@@ -20,7 +20,7 @@ export const Threads = (props: {
     .orderBy('createdAt')
     .limit(25)
   const [threads]: [
-    any[] | undefined,
+    IThreadData[] | undefined,
     boolean,
     firebase.FirebaseError | undefined
   ] = useCollectionData(threadsQuery, {
