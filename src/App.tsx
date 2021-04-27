@@ -16,7 +16,7 @@ import { Landing } from '~/components/Landing'
 import { NavBar } from '~/components/header/NavBar'
 import { Login } from '~/components/login/Login'
 
-firebase.initializeApp({
+const app: firebase.app.App = firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_PROJECT_ID,
@@ -26,14 +26,15 @@ firebase.initializeApp({
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 })
 
-const auth = firebase.auth()
-const firestore = firebase.firestore()
+const auth: firebase.auth.Auth = app.auth()
+const firestore: firebase.firestore.Firestore = app.firestore()
 
 function App() {
   const [user] = useAuthState(auth)
   const [threadData, setThreadData] = useState({
     createdAt: { nanoseconds: 0, seconds: 0 },
     title: '',
+    id: '',
   })
   return (
     <Router>
@@ -48,7 +49,7 @@ function App() {
         </header>
       </div>
       <Route exact path="/">
-        {!user ? <Login firebase={firebase} auth={auth} /> : <Landing />}
+        {!user ? <Login auth={auth} /> : <Landing />}
       </Route>
       {user ? (
         <Switch>

@@ -5,8 +5,8 @@ import '~/assets/css/login/login.css'
 import { GitHub as LoginWithGitHub } from '~/components/login/GitHub'
 import { Google as LoginWithGoogle } from '~/components/login/Google'
 
-export const Login = (props: { firebase: any; auth: firebase.auth.Auth }) => {
-  const { firebase, auth } = props
+export const Login = (props: { auth: firebase.auth.Auth }) => {
+  const { auth } = props
   return (
     <div className="hero-body">
       <div className="container has-text-centered">
@@ -16,8 +16,8 @@ export const Login = (props: { firebase: any; auth: firebase.auth.Auth }) => {
           <p className="subtitle has-text-black">
             Please login to proceed.
           </p>{' '}
-          <LoginWithGoogle firebase={firebase} auth={auth} />
-          <LoginWithGitHub firebase={firebase} auth={auth} />{' '}
+          <LoginWithGoogle auth={auth} />
+          <LoginWithGitHub auth={auth} />{' '}
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 
 import '~/assets/css/chatroom/message/message.css'
 import { Message } from '~/components/chatroom/Message'
+import { IMessage } from '~/models/IMessage'
 import { IThread } from '~/models/IThread'
 import { IThreadData } from '~/models/IThreadData'
 import { scrollToBottom } from '~/utils/helper'
@@ -16,9 +17,17 @@ export const Chatroom = (props: {
   threadData: IThreadData
 }) => {
   const { firestore, auth, threadData } = props
-  const messagesRef = firestore.collection('messages')
-  const query = messagesRef.orderBy('createdAt').limit(25)
-  const [messages] = useCollectionData(query, { idField: 'id' })
+  const messagesRef: firebase.firestore.CollectionReference = firestore.collection(
+    'messages'
+  )
+  const query: firebase.firestore.Query<firebase.firestore.DocumentData> = messagesRef
+    .orderBy('createdAt')
+    .limit(25)
+  const [messages]: [
+    any[] | undefined,
+    boolean,
+    firebase.FirebaseError | undefined
+  ] = useCollectionData(query, { idField: 'id' })
 
   const [formMessage, setFormMessage] = useState('')
   const { id } = useParams<IThread>()
@@ -52,10 +61,11 @@ export const Chatroom = (props: {
 
   /**
    * Return filtered messages based on thread
+   *
    * @param message
    */
-  const getFilteredMessages = (messages: any) => {
-    return messages.filter(function (message: any) {
+  const getFilteredMessages = (messages: IMessage[]) => {
+    return messages.filter(function (message: IMessage) {
       return message?.threadId === id
     })
   }
@@ -72,7 +82,9 @@ export const Chatroom = (props: {
       </section>
       <div id="messages" className="hero-body messages-window">
         {messages &&
-          getFilteredMessages(messages).map((message: any) => (
+          getFilteredMessages(
+            (messages as unknown) as IMessage[]
+          ).map((message: IMessage) => (
             <Message key={message.id} message={message} auth={auth} />
           ))}
       </div>

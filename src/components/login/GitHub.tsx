@@ -9,8 +9,8 @@ import '~/assets/css/login/icon.css'
  * @param props
  * @returns
  */
-export const GitHub = (props: { firebase: any; auth: firebase.auth.Auth }) => {
-  const { firebase, auth } = props
+export const GitHub = (props: { auth: firebase.auth.Auth }) => {
+  const { auth } = props
   const githubSigninPrompt = () => {
     const provider = new firebase.auth.GithubAuthProvider()
     auth.signInWithPopup(provider)
