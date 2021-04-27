@@ -10,8 +10,9 @@ import { scrollToBottom } from '~/utils/helper'
 export const Threads = (props: {
   firestore: firebase.firestore.Firestore
   setThreadData: Function
+  setShowModal: Function
 }) => {
-  const { firestore, setThreadData } = props
+  const { firestore, setThreadData, setShowModal } = props
   const threadsRef: firebase.firestore.CollectionReference = firestore.collection(
     'threads'
   )
@@ -43,7 +44,7 @@ export const Threads = (props: {
         <span className="icon-text">
           <button
             className="button is-primary "
-            onMouseEnter={() => setShowThreads(!showThreads)}
+            onClick={() => setShowThreads(!showThreads)}
           >
             <span className="icon">
               <i className="fas fa-angle-down"></i>
@@ -59,6 +60,13 @@ export const Threads = (props: {
               <i className="fas fa-info-circle" /> You can create up to{' '}
               <strong>max 2 rooms</strong>.
             </p>
+            <hr className="dropdown-divider" />
+            <button
+              className="button is-success is-light"
+              onClick={() => setShowModal(true)}
+            >
+              Add chatroom
+            </button>
           </div>
           <hr className="dropdown-divider" />
           {threads &&
@@ -68,7 +76,6 @@ export const Threads = (props: {
                 key={thread.id}
                 to={`/room/${thread.id}`}
                 className="dropdown-item thread-title"
-                onMouseLeave={() => setShowThreads(!showThreads)}
               >
                 <i className="fas fa-door-open door-icon" />
                 {thread.title}

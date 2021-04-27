@@ -13,6 +13,7 @@ import {
 import '~/assets/css/App.css'
 import { Chatroom } from '~/components/Chatroom'
 import { Landing } from '~/components/Landing'
+import { Modal } from '~/components/Modal'
 import { NavBar } from '~/components/header/NavBar'
 import { Login } from '~/components/login/Login'
 
@@ -36,6 +37,7 @@ function App() {
     title: '',
     id: '',
   })
+  const [showModal, setShowModal] = useState(false)
   return (
     <Router>
       <div className="App">
@@ -45,8 +47,10 @@ function App() {
             auth={auth}
             firestore={firestore}
             setThreadData={setThreadData}
+            setShowModal={setShowModal}
           />
         </header>
+        <Modal showModal={showModal} setShowModal={setShowModal} />
       </div>
       <Route exact path="/">
         {!user ? <Login auth={auth} /> : <Landing />}

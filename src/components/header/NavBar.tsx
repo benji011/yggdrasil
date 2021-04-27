@@ -12,8 +12,9 @@ export const NavBar = (props: {
   user: firebase.User | null | undefined
   auth: firebase.auth.Auth
   setThreadData: Function
+  setShowModal: Function
 }) => {
-  const { firestore, user, auth, setThreadData } = props
+  const { firestore, user, auth, setThreadData, setShowModal } = props
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -22,7 +23,11 @@ export const NavBar = (props: {
         </Link>
         <div className="buttons header-buttons">
           {user && (
-            <Threads firestore={firestore} setThreadData={setThreadData} />
+            <Threads
+              firestore={firestore}
+              setThreadData={setThreadData}
+              setShowModal={setShowModal}
+            />
           )}
         </div>
       </div>
