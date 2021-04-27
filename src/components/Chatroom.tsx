@@ -74,9 +74,8 @@ export const Chatroom = (props: {
       <section className="hero is-primary is-small">
         <div className="hero-body">
           <p className="title">{threadData.title}</p>
-          <p className="subtitle">
-            {transformThreadDate(threadData.createdAt.seconds)}
-          </p>
+          <p className="subtitle">{threadData.description}</p>
+          <strong>{transformThreadDate(threadData.createdAt.seconds)}</strong>
         </div>
       </section>
       <div id="messages" className="hero-body messages-window">

@@ -5,4 +5,5 @@ export interface IThread {
     seconds: number
   }
   title: string
+  description: string
 }
