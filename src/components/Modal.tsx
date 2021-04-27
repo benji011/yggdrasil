@@ -24,14 +24,12 @@ export const Modal = (props: {
             label="Title"
             placeholder="Discussion title"
           />
-
           <Textarea
             className="textarea"
             label="Message"
             placeholder="Break the ice!"
           />
           <Checkbox label=" I agree to the " a="terms and conditions" />
-
           <div className="field is-grouped grouped-buttons">
             <p className="control">
               <Button
