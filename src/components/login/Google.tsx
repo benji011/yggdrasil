@@ -7,8 +7,8 @@ import 'firebase/firestore'
  * @param props
  * @returns
  */
-export const Google = (props: { firebase: any; auth: firebase.auth.Auth }) => {
-  const { firebase, auth } = props
+export const Google = (props: { auth: firebase.auth.Auth }) => {
+  const { auth } = props
   const googleSigninPrompt = () => {
     const provider = new firebase.auth.GoogleAuthProvider()
     auth.signInWithPopup(provider)

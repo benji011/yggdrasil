@@ -4,6 +4,8 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/threads.css'
+import { IThread } from '~/models/IThread'
+import { IThreadData } from '~/models/IThreadData'
 import { scrollToBottom } from '~/utils/helper'
 
 export const Threads = (props: {
@@ -11,9 +13,19 @@ export const Threads = (props: {
   setThreadData: Function
 }) => {
   const { firestore, setThreadData } = props
-  const threadsRef = firestore.collection('threads')
-  const threadsQuery = threadsRef.orderBy('createdAt').limit(25)
-  const [threads] = useCollectionData(threadsQuery, { idField: 'id' })
+  const threadsRef: firebase.firestore.CollectionReference = firestore.collection(
+    'threads'
+  )
+  const threadsQuery: firebase.firestore.Query<firebase.firestore.DocumentData> = threadsRef
+    .orderBy('createdAt')
+    .limit(25)
+  const [threads]: [
+    any[] | undefined,
+    boolean,
+    firebase.FirebaseError | undefined
+  ] = useCollectionData(threadsQuery, {
+    idField: 'id',
+  })
   const [showThreads, setShowThreads] = useState(false)
 
   /**
@@ -21,7 +33,7 @@ export const Threads = (props: {
    *
    * @param thread A thread object
    */
-  const goToChatroom = (thread: any) => {
+  const goToChatroom = (thread: IThread) => {
     scrollToBottom()
     setThreadData(thread)
   }
@@ -51,7 +63,7 @@ export const Threads = (props: {
           </div>
           <hr className="dropdown-divider" />
           {threads &&
-            threads.map((thread: any) => (
+            threads.map((thread: IThreadData) => (
               <Link
                 onClick={() => goToChatroom(thread)}
                 key={thread.id}

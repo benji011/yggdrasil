@@ -13,13 +13,13 @@ export const Message = (props: {
   const text: string = message?.text
   const photoURL: string = message?.photoURL
   const createdAt: string = transformSecondsToDate(message?.createdAt.seconds)
-  const currentUser: any = auth?.currentUser
+  const currentUser: firebase.User | null = auth?.currentUser
   const messageClass: string =
-    uid === currentUser.uid ? 'is-primary' : 'is-info'
+    uid === currentUser?.uid ? 'is-primary' : 'is-info'
   const profileImgClass: string =
-    uid === currentUser.uid ? 'current-user' : 'friend'
+    uid === currentUser?.uid ? 'current-user' : 'friend'
   const displayName: string =
-    uid === currentUser.uid ? 'Me' : message?.displayName
+    uid === currentUser?.uid ? 'Me' : message?.displayName
 
   return (
     <span className={`message ${messageClass}`}>
