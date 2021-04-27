@@ -1,7 +1,9 @@
+import { FormEvent } from 'react'
+
 export interface IInput {
   className: string
   label: string
   placeholder: string
   value?: string
-  onChange?: () => void
+  onChange?: (e: any) => void
 }
