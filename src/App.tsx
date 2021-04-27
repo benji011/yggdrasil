@@ -36,6 +36,7 @@ function App() {
     createdAt: { nanoseconds: 0, seconds: 0 },
     title: '',
     id: '',
+    description: '',
   })
   const [showModal, setShowModal] = useState(false)
   return (
