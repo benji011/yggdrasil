@@ -51,7 +51,11 @@ function App() {
             setShowModal={setShowModal}
           />
         </header>
-        <Modal showModal={showModal} setShowModal={setShowModal} />
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          firestore={firestore}
+        />
       </div>
       <Route exact path="/">
         {!user ? <Login auth={auth} /> : <Landing />}
