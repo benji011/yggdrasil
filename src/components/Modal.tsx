@@ -1,6 +1,10 @@
 import React from 'react'
 
 import '~/assets/css/modal.css'
+import { Button } from '~/components/common/Button'
+import { Checkbox } from '~/components/common/Checkbox'
+import { Input } from '~/components/common/Input'
+import { Textarea } from '~/components/common/Textarea'
 
 export const Modal = (props: {
   showModal: boolean
@@ -15,43 +19,35 @@ export const Modal = (props: {
       <section className="modal-main">
         <div className="container">
           <h1 className="title">Add new chatroom</h1>
-          <div className="field">
-            <label className="label">Name</label>
-            <div className="control">
-              <input className="input" type="text" placeholder="Text input" />
-            </div>
-          </div>
+          <Input
+            className="input"
+            label="Title"
+            placeholder="Discussion title"
+          />
 
-          <div className="field">
-            <label className="label">Message</label>
-            <div className="control">
-              <textarea className="textarea" placeholder="Textarea"></textarea>
-            </div>
-          </div>
-
-          <div className="field">
-            <div className="control">
-              <label className="checkbox">
-                <input type="checkbox" /> I agree to the{' '}
-                <a href="/">terms and conditions</a>
-              </label>
-            </div>
-          </div>
+          <Textarea
+            className="textarea"
+            label="Message"
+            placeholder="Break the ice!"
+          />
+          <Checkbox label=" I agree to the " a="terms and conditions" />
 
           <div className="field is-grouped grouped-buttons">
             <p className="control">
-              <button className="button is-primary modal-button" type="button">
-                Submit
-              </button>
+              <Button
+                className="button is-primary modal-button"
+                text="Submit"
+                icon="fas fa-check-square"
+                onClick={() => void 0}
+              />
             </p>
             <p className="control">
-              <button
-                className="button is-danger modal-button"
-                type="button"
+              <Button
+                className="button is-danger modal-button is-danger-button"
+                text="Cancel"
+                icon="fas fa-window-close"
                 onClick={() => setShowModal(false)}
-              >
-                Cancel
-              </button>
+              />
             </p>
           </div>
         </div>

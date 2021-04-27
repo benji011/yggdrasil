@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/navbar.css'
 import logo from '~/assets/img/logo.png'
-import { Signout } from '~/components/Signout'
+import { Button } from '~/components/common/Button'
 import { Threads } from '~/components/header/Threads'
 
 export const NavBar = (props: {
@@ -47,7 +47,18 @@ export const NavBar = (props: {
               </h4>
             )}
           </div>
-          <div className="navbar-item">{user && <Signout auth={auth} />}</div>
+          <div className="navbar-item">
+            {user && auth.currentUser && (
+              <span className="icon-text">
+                <Button
+                  className="button is-danger is-danger-button"
+                  text="Signout"
+                  icon="fas fa-sign-out-alt"
+                  onClick={() => auth.signOut()}
+                />
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </nav>
