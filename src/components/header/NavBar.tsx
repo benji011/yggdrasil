@@ -41,7 +41,7 @@ export const NavBar = (props: {
             />
           )}
         </div>
-        <a
+        <span
           role="button"
           className="navbar-burger"
           aria-label="menu"
@@ -52,7 +52,7 @@ export const NavBar = (props: {
           <span aria-hidden="true" />
           <span aria-hidden="true" />
           <span aria-hidden="true" />
-        </a>
+        </span>
       </div>
       <div
         id="navbarBurgerMenu"
@@ -74,7 +74,7 @@ export const NavBar = (props: {
             )}
           </div>
           <div className="navbar-item">
-            {user && auth.currentUser && (
+            {user && auth.currentUser ? (
               <span className="icon-text">
                 <Button
                   className="button is-danger is-danger-button"
@@ -83,6 +83,14 @@ export const NavBar = (props: {
                   onClick={() => signout()}
                 />
               </span>
+            ) : (
+              <Link to="/login" onClick={() => setShowBurgerDropdown(false)}>
+                <Button
+                  className="button is-primary"
+                  text="Login"
+                  icon="fas fa-sign-in-alt"
+                />
+              </Link>
             )}
           </div>
         </div>
