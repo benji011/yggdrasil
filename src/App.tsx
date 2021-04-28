@@ -3,16 +3,11 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useHistory } from 'react-router-dom'
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import '~/assets/css/App.css'
 import { Chatroom } from '~/components/Chatroom'
+import { Home } from '~/components/Home'
 import { Landing } from '~/components/Landing'
 import { Modal } from '~/components/Modal'
 import { NavBar } from '~/components/header/NavBar'
@@ -40,7 +35,6 @@ function App() {
     description: '',
   })
   const [showModal, setShowModal] = useState(false)
-  const history: any = useHistory()
   return (
     <Router>
       <div className="App">
@@ -60,9 +54,10 @@ function App() {
         />
       </div>
       <Route exact path="/">
-        <Landing history={history} />
+        {user ? <Home /> : <Landing />}
       </Route>
-      {user ? (
+      <Route path="/home">{user ? <Home /> : <Login auth={auth} />}</Route>
+      {user && (
         <Switch>
           <Route
             path="/room/:id"
@@ -75,11 +70,15 @@ function App() {
             }
           />
         </Switch>
-      ) : (
-        <Redirect to="/" />
       )}
       <Route path="/login">
-        {user ? <Landing history={history} /> : <Login auth={auth} />}
+        {!user ? (
+          <Login auth={auth} />
+        ) : user ? (
+          <Home />
+        ) : (
+          <Login auth={auth} />
+        )}
       </Route>
     </Router>
   )

@@ -60,7 +60,10 @@ export const NavBar = (props: {
       >
         <div className="navbar-start">
           <div className="navbar-item">
-            <Link to="/" onClick={() => setShowBurgerDropdown(false)}>
+            <Link
+              to={`${user ? '/home' : '/'}`}
+              onClick={() => setShowBurgerDropdown(false)}
+            >
               <h4>
                 <i className="fas fa-home" /> Home
               </h4>
