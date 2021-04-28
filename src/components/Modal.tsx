@@ -64,6 +64,7 @@ export const Modal = (props: {
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
             }
+            value={formData.title}
           />
           <Input
             className="input"
@@ -72,6 +73,7 @@ export const Modal = (props: {
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
             }
+            value={formData.description}
           />
           <Checkbox label=" I agree to the " a="terms and conditions" />
         </div>
