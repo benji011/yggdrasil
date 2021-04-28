@@ -29,7 +29,7 @@ export const NavBar = (props: {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <Link to="/">
+        <Link to="/" onClick={() => setShowBurgerDropdown(false)}>
           <img className="logo" src={logo} alt="logo" />
         </Link>
         <div className="buttons header-buttons header-drop-down">
@@ -60,7 +60,7 @@ export const NavBar = (props: {
       >
         <div className="navbar-start">
           <div className="navbar-item">
-            <Link to="/">
+            <Link to="/" onClick={() => setShowBurgerDropdown(false)}>
               <h4>
                 <i className="fas fa-home" /> Home
               </h4>
