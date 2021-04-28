@@ -1,5 +1,5 @@
 import firebase from 'firebase/app'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import '~/assets/css/navbar/navbar.css'
@@ -15,13 +15,24 @@ export const NavBar = (props: {
   setShowModal: Function
 }) => {
   const { firestore, user, auth, setThreadData, setShowModal } = props
+  const [showBurgerDropdown, setShowBurgerDropdown] = useState(false)
+
+  /**
+   * Signs user out. Sets burger dropdown menu to false just incase
+   * to avoid weird UI crap.
+   */
+  const signout = () => {
+    auth.signOut()
+    setShowBurgerDropdown(false)
+  }
+
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <Link to="/">
           <img className="logo" src={logo} alt="logo" />
         </Link>
-        <div className="buttons header-buttons">
+        <div className="buttons header-buttons header-drop-down">
           {user && (
             <Threads
               firestore={firestore}
@@ -30,8 +41,23 @@ export const NavBar = (props: {
             />
           )}
         </div>
+        <a
+          role="button"
+          className="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBurgerMenu"
+          onClick={() => setShowBurgerDropdown(!showBurgerDropdown)}
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </a>
       </div>
-      <div className="navbar-menu">
+      <div
+        id="navbarBurgerMenu"
+        className={`navbar-menu ${showBurgerDropdown && 'is-active'}`}
+      >
         <div className="navbar-start">
           <div className="navbar-item">
             <Link to="/">
@@ -54,7 +80,7 @@ export const NavBar = (props: {
                   className="button is-danger is-danger-button"
                   text="Signout"
                   icon="fas fa-sign-out-alt"
-                  onClick={() => auth.signOut()}
+                  onClick={() => signout()}
                 />
               </span>
             )}

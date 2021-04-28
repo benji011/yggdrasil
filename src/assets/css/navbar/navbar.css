@@ -12,6 +12,18 @@
   margin-right: 10px;
 }
 
+.navbar-menu {
+  text-align: left !important;
+}
+
+.navbar-burger {
+  margin-top: 1rem;
+}
+
 .navbar-item > a {
   color: #4a4a4a !important;
+}
+
+.header-drop-down {
+  margin-bottom: 0 !important;
 }

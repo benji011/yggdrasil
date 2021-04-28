@@ -3,7 +3,6 @@ import React, { FormEvent, useState } from 'react'
 
 import '~/assets/css/modal.css'
 import { Button } from '~/components/common/Button'
-import { Checkbox } from '~/components/common/Checkbox'
 import { Input } from '~/components/common/Input'
 
 /**
@@ -75,9 +74,8 @@ export const Modal = (props: {
             }
             value={formData.description}
           />
-          <Checkbox label=" I agree to the " a="terms and conditions" />
         </div>
-        <div className="field is-grouped">
+        <div className="field is-grouped grouped-buttons">
           <p className="control">
             <Button
               className="button is-primary modal-button"
