@@ -3,6 +3,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useHistory } from 'react-router-dom'
 import {
   BrowserRouter as Router,
   Route,
@@ -39,6 +40,7 @@ function App() {
     description: '',
   })
   const [showModal, setShowModal] = useState(false)
+  const history: any = useHistory()
   return (
     <Router>
       <div className="App">
@@ -58,7 +60,7 @@ function App() {
         />
       </div>
       <Route exact path="/">
-        {!user ? <Login auth={auth} /> : <Landing />}
+        <Landing history={history} />
       </Route>
       {user ? (
         <Switch>
@@ -76,6 +78,9 @@ function App() {
       ) : (
         <Redirect to="/" />
       )}
+      <Route path="/login">
+        {user ? <Landing history={history} /> : <Login auth={auth} />}
+      </Route>
     </Router>
   )
 }
