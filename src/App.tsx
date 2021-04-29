@@ -10,6 +10,7 @@ import { Chatroom } from '~/components/Chatroom'
 import { Home } from '~/components/Home'
 import { Landing } from '~/components/Landing'
 import { Modal } from '~/components/Modal'
+import { Footer } from '~/components/footer/Footer'
 import { NavBar } from '~/components/header/NavBar'
 import { Login } from '~/components/login/Login'
 
@@ -80,6 +81,9 @@ function App() {
           <Login auth={auth} />
         )}
       </Route>
+      <footer>
+        <Footer />
+      </footer>
     </Router>
   )
 }
