@@ -65,13 +65,17 @@ export const Landing = () => {
                 Join or create a chatroom, then chat away! Yggdrasil is{' '}
                 <strong>free</strong> and <strong>secure</strong>.
               </h2>
-              <Link to="/about">
+              <a
+                href="https://github.com/benji011/yggdrasil-chatroom"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Button
                   className="button is-primary is-medium"
                   text="Learn more"
                   icon="fas fa-search"
                 />
-              </Link>
+              </a>
             </div>
             <div
               data-aos="fade-right"
