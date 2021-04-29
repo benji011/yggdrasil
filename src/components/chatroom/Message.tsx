@@ -15,15 +15,17 @@ export const Message = (props: {
   const createdAt: string = transformSecondsToDate(message?.createdAt.seconds)
   const currentUser: firebase.User | null = auth?.currentUser
   const messageClass: string =
-    uid === currentUser?.uid ? 'is-primary' : 'is-info'
+    uid === currentUser?.uid ? 'message-contents-you' : 'message-contents-other'
+  const bubblePosition: string =
+    uid === currentUser?.uid ? 'bubble-right' : 'bubble-left'
   const profileImgClass: string =
     uid === currentUser?.uid ? 'current-user' : 'friend'
   const displayName: string =
     uid === currentUser?.uid ? 'Me' : message?.displayName
 
   return (
-    <span className={`message ${messageClass}`}>
-      <span className="message-contents">
+    <span className={`message ${bubblePosition}`}>
+      <span className={`message-contents ${messageClass}`}>
         <img
           className={`profile-img ${profileImgClass}`}
           src={

@@ -33,12 +33,12 @@ export const Landing = () => {
               data-aos="fade-down"
             >
               <h4 className="title titled is-1 mb-6">
-                Welcome to <strong>YGGDRASIL</strong>
+                Welcome to <strong>Yggdrasil</strong>
               </h4>
               <h2 className=" subtitled subtitle has-text-grey is-4 has-text-weight-normal is-family-sans-serif">
-                <strong>Yggdrasil</strong> is a public chatroom designed to let
-                you talk to other people openly on the internet. Login with
-                either your GitHub or Google to join in the fun!
+                <strong>Yggdrasil</strong> is an open source public chatroom
+                designed to let you talk to other people openly on the internet.
+                Login with either your GitHub or Google to join in the fun!
               </h2>
               <Link to="/login">
                 <Button

@@ -79,7 +79,7 @@ export const Chatroom = (props: {
           <strong>{transformThreadDate(threadData.createdAt.seconds)}</strong>
         </div>
       </section>
-      <div id="messages" className="hero-body messages-window">
+      <div id="messages" className="messages-window">
         {messages &&
           getFilteredMessages(
             (messages as unknown) as IMessage[]
