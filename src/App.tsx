@@ -6,12 +6,12 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import '~/assets/css/App.css'
-import { Chatroom } from '~/components/Chatroom'
-import { Home } from '~/components/Home'
-import { Landing } from '~/components/Landing'
-import { Modal } from '~/components/Modal'
+import { Chatroom } from '~/components/chatroom/Chatroom'
 import { Footer } from '~/components/footer/Footer'
 import { NavBar } from '~/components/header/NavBar'
+import { Home } from '~/components/home/Home'
+import { Landing } from '~/components/home/Landing'
+import { Modal } from '~/components/home/Modal'
 import { Login } from '~/components/login/Login'
 
 const app: firebase.app.App = firebase.initializeApp({
