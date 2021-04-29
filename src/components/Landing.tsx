@@ -78,9 +78,9 @@ export const Landing = () => {
               className="column
           is-12-mobile is-offset-1-mobile
           is-12-tablet is-offset-1-tablet
-          is-8-desktop is-offset-1-desktop
-          is-8-widescreen is-offset-1-widescreen
-          is-8-fullhd is-offset-1-fullhd"
+          is-7-desktop is-offset-1-desktop
+          is-7-widescreen is-offset-1-widescreen
+          is-7-fullhd is-offset-1-fullhd"
             >
               <figure className="image">
                 <img src={ChatScreenshot} alt="testing" />
