@@ -30,7 +30,7 @@
 .messages-window {
   white-space: pre-line;
   padding: 20px;
-  max-height: 50vh;
+  height: 50vh;
   overflow: scroll;
 }
 
