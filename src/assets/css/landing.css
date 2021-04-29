@@ -29,3 +29,7 @@
 .landing-container-item {
   padding-bottom: 80px !important;
 }
+
+.sample-chat-window {
+  box-shadow: 0 0 2rem rgb(0 0 0 / 10%);
+}
