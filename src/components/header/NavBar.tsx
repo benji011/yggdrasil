@@ -79,12 +79,14 @@ export const NavBar = (props: {
           <div className="navbar-item">
             {user && auth.currentUser ? (
               <span className="icon-text">
-                <Button
-                  className="button is-danger is-danger-button"
-                  text="Signout"
-                  icon="fas fa-sign-out-alt"
-                  onClick={() => signout()}
-                />
+                <Link to="/" onClick={() => setShowBurgerDropdown(false)}>
+                  <Button
+                    className="button is-danger is-danger-button"
+                    text="Signout"
+                    icon="fas fa-sign-out-alt"
+                    onClick={() => signout()}
+                  />
+                </Link>
               </span>
             ) : (
               <Link to="/login" onClick={() => setShowBurgerDropdown(false)}>

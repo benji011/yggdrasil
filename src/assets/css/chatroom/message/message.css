@@ -1,6 +1,7 @@
 .message {
   display: flex;
   align-items: center;
+  background-color: transparent !important;
 }
 
 .is-primary {
@@ -35,6 +36,46 @@ form button {
 }
 
 .messages-window {
+  white-space: pre-line;
+  padding: 10px;
   max-height: 50vh;
   overflow: scroll;
+}
+
+.title,
+.subtitle {
+  margin-top: 0 !important;
+  padding: 0 !important;
+}
+
+.message-contents {
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff !important;
+}
+
+.message-contents-you {
+  background-color: #00d1b2 !important;
+}
+
+.message-contents-other {
+  background-color: #1f2330 !important;
+}
+
+.bubble-left,
+.bubble-right {
+  line-height: 100%;
+  position: relative;
+  border-radius: 10px;
+  clear: both;
+}
+
+.bubble-left {
+  float: left;
+  margin-right: 10%;
+}
+.bubble-right {
+  float: right;
+  margin-left: 10%;
 }
