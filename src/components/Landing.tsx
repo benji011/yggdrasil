@@ -86,7 +86,7 @@ export const Landing = () => {
           is-7-widescreen is-offset-1-widescreen
           is-7-fullhd is-offset-1-fullhd"
             >
-              <figure className="image">
+              <figure className="image sample-chat-window">
                 <img src={ChatScreenshot} alt="testing" />
               </figure>
             </div>
