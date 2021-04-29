@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import '~/assets/css/landing.css'
+import ChatScreenshot from '~/assets/img/yggdrasil-chat-example.png'
 import Friendship from '~/assets/svg/friendship.svg'
 import { Button } from '~/components/common/Button'
 
@@ -9,7 +10,7 @@ export const Landing = () => {
     <section className="hero is-white is-fullheight">
       <div className="hero-body">
         <div className="container">
-          <div className="columns  is-vcentered reverse-columns">
+          <div className="columns is-vcentered reverse-columns landing-container-item">
             <div
               data-aos="fade-right"
               className="column
@@ -47,6 +48,43 @@ export const Landing = () => {
                   icon="fas fa-signature"
                 />
               </Link>
+            </div>
+          </div>
+          <div className="columns is-vcentered reverse-columns">
+            <div
+              className="column
+          is-7-mobile is-offset-1-mobile
+          is-7-tablet is-offset-1-tablet
+          is-4-desktop is-offset-1-desktop
+          is-4-widescreen is-offset-1-widescreen
+          is-4-fullhd is-offset-1-fullhd"
+              data-aos="fade-down"
+            >
+              <h4 className="title titled is-1 mb-6">How it works</h4>
+              <h2 className=" subtitled subtitle has-text-grey is-4 has-text-weight-normal is-family-sans-serif">
+                Join or create a chatroom, then chat away! Yggdrasil is{' '}
+                <strong>free</strong> and <strong>secure</strong>.
+              </h2>
+              <Link to="/about">
+                <Button
+                  className="button is-primary is-medium"
+                  text="Learn more"
+                  icon="fas fa-search"
+                />
+              </Link>
+            </div>
+            <div
+              data-aos="fade-right"
+              className="column
+          is-12-mobile is-offset-1-mobile
+          is-12-tablet is-offset-1-tablet
+          is-8-desktop is-offset-1-desktop
+          is-8-widescreen is-offset-1-widescreen
+          is-8-fullhd is-offset-1-fullhd"
+            >
+              <figure className="image">
+                <img src={ChatScreenshot} alt="testing" />
+              </figure>
             </div>
           </div>
         </div>

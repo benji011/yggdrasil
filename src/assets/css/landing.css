@@ -25,3 +25,7 @@
   margin: auto;
   justify-content: center !important;
 }
+
+.landing-container-item {
+  padding-bottom: 80px !important;
+}
