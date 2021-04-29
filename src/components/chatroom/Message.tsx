@@ -14,8 +14,6 @@ export const Message = (props: {
   const photoURL: string = message?.photoURL
   const createdAt: string = transformSecondsToDate(message?.createdAt.seconds)
   const currentUser: firebase.User | null = auth?.currentUser
-  const messageClass: string =
-    uid === currentUser?.uid ? 'message-contents-you' : 'message-contents-other'
   const bubblePosition: string =
     uid === currentUser?.uid ? 'bubble-right' : 'bubble-left'
   const profileImgClass: string =
@@ -25,7 +23,7 @@ export const Message = (props: {
 
   return (
     <span className={`message ${bubblePosition}`}>
-      <span className={`message-contents ${messageClass}`}>
+      <span className="message-contents">
         <img
           className={`profile-img ${profileImgClass}`}
           src={
