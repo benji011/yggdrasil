@@ -87,7 +87,7 @@ export const Chatroom = (props: {
             <Message key={message.id} message={message} auth={auth} />
           ))}
       </div>
-      <form onSubmit={onSubmit}>
+      {/* <form onSubmit={onSubmit}>
         <input
           className="textarea is-primary"
           type="text"
@@ -99,7 +99,27 @@ export const Chatroom = (props: {
           className="button is-primary"
           icon="far fa-paper-plane send-icon"
         />
-      </form>
+      </form> */}
+      <div className="container has-text-centered">
+        <form onSubmit={onSubmit} className="send-message-form">
+          <div className="field has-addons">
+            <div className="control is-expanded">
+              <input
+                className="input send-message-input"
+                placeholder="type your message here"
+                value={formMessage}
+                onChange={(e) => setFormMessage(e.target.value)}
+              />
+            </div>
+            <div className="control">
+              <Button
+                className="button is-primary send-message-button"
+                icon="far fa-paper-plane send-icon"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

@@ -19,16 +19,8 @@
   margin: 2px 5px;
 }
 
-form {
-  bottom: 0;
-  width: 100%;
-  max-width: 90vw;
-  display: flex;
-}
-
-form button {
-  width: 20%;
-  height: 128px !important;
+.message-form {
+  margin: auto;
 }
 
 .send-icon {
@@ -37,7 +29,7 @@ form button {
 
 .messages-window {
   white-space: pre-line;
-  padding: 10px;
+  padding: 20px;
   max-height: 50vh;
   overflow: scroll;
 }
@@ -49,18 +41,11 @@ form button {
 }
 
 .message-contents {
-  width: 300px;
+  min-width: 400px;
+  width: 100%;
   padding: 10px;
   border-radius: 10px;
   color: #fff !important;
-}
-
-.message-contents-you {
-  background-color: #00d1b2 !important;
-}
-
-.message-contents-other {
-  background-color: #1f2330 !important;
 }
 
 .bubble-left,
@@ -74,8 +59,31 @@ form button {
 .bubble-left {
   float: left;
   margin-right: 10%;
+  background-color: #00d1b2 !important;
 }
 .bubble-right {
   float: right;
   margin-left: 10%;
+  background-color: #1f2330 !important;
+}
+
+.send-message-form {
+  height: 80px;
+  margin-bottom: 5px;
+}
+
+.send-message-input {
+  border-bottom-left-radius: 5px !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  height: 60px;
+}
+
+.send-message-button {
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-right-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  height: 60px;
 }
