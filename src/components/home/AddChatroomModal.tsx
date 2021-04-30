@@ -2,6 +2,7 @@ import firebase from 'firebase/app'
 import React, { FormEvent, useState } from 'react'
 
 import '~/assets/css/modal.css'
+import New from '~/assets/svg/new.svg'
 import { Button } from '~/components/common/Button'
 import { Input } from '~/components/common/Input'
 
@@ -56,8 +57,9 @@ export const AddChatroomModal = (props: {
       className={`${showModal ? 'modal display-block' : 'modal display-none'}`}
     >
       <section className="modal-main">
-        <div className="container">
+        <div className="container hero-body has-text-centered">
           <h1 className="title">Add new chatroom</h1>
+          <img className="modal-img" src={New} alt="Delete thread" />
           <Input
             className="input"
             label="Title"
