@@ -50,7 +50,7 @@ export const DeleteChatroomModal = (props: {
           <p className="control">
             <Button
               className="button is-primary modal-button"
-              text="Submit"
+              text="Delete"
               icon="fas fa-check-square"
               onClick={onSubmit}
             />
