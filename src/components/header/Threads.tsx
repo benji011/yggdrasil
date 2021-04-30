@@ -79,7 +79,7 @@ export const Threads = (props: {
             />
           </div>
           <hr className="dropdown-divider" />
-          {threads &&
+          {threads && threads.length > 0 ? (
             threads.map((thread: IThread) => (
               <Link
                 onClick={() => goToChatroom(thread)}
@@ -90,7 +90,12 @@ export const Threads = (props: {
                 <i className="fas fa-door-open door-icon" />
                 {thread.title}
               </Link>
-            ))}
+            ))
+          ) : (
+            <div className="dropdown-item">
+              <p>No rooms created yet</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
