@@ -16,3 +16,8 @@
   font-weight: 400 !important;
   line-height: 36px !important;
 }
+
+.dashboard-grouped-buttons {
+  margin-top: 20px;
+  justify-content: center !important;
+}
