@@ -45,17 +45,19 @@ export const Chatroom = (props: {
     const photoURL: string | undefined | null = auth.currentUser?.photoURL
     const msg: string = formMessage
     setFormMessage('')
-    await messagesRef.add({
-      text: msg,
-      createdAt: {
-        nanoseconds: 0,
-        seconds: parseInt((new Date().getTime() / 1000).toString()),
-      },
-      threadId: id,
-      displayName,
-      uid,
-      photoURL,
-    })
+    if (!threadData.isLocked) {
+      await messagesRef.add({
+        text: msg,
+        createdAt: {
+          nanoseconds: 0,
+          seconds: parseInt((new Date().getTime() / 1000).toString()),
+        },
+        threadId: id,
+        displayName,
+        uid,
+        photoURL,
+      })
+    }
     scrollToBottom()
   }
 
@@ -104,7 +106,7 @@ export const Chatroom = (props: {
                 className="button is-primary send-message-button"
                 icon="far fa-paper-plane send-icon"
                 onClick={onSubmit}
-                isDisabled={true}
+                isDisabled={threadData.isLocked || !formMessage}
               />
             </div>
           </div>
