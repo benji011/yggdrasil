@@ -1,6 +1,6 @@
 ## About
 
-The Firebase Database uses a NoSQL like syntax. Each "Collection" is like a table record and each "document" represents a record in SQL. You can refer to the [models directory](./src/models/) on the interface used for each collection & document.
+The Firebase Database is NoSQL. In Firebase DB, each "Collection" is like a table record and each "document" represents a record in SQL. You can refer to the [models directory](./src/models/) on the interface used for each collection & document.
 
 ## Messages
 

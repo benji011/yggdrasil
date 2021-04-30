@@ -13,11 +13,12 @@ import { Input } from '~/components/common/Input'
  * @returns
  */
 export const Modal = (props: {
+  user: firebase.User | undefined | null
   showModal: boolean
   setShowModal: Function
   firestore: firebase.firestore.Firestore
 }) => {
-  const { showModal, setShowModal, firestore } = props
+  const { user, showModal, setShowModal, firestore } = props
   const initialFormData = {
     createdAt: {
       nanoseconds: 0,
@@ -44,6 +45,7 @@ export const Modal = (props: {
         nanoseconds: 0,
         seconds: parseInt((new Date().getTime() / 1000).toString()),
       },
+      author: user?.uid,
     })
     setShowModal(false)
     setFormData(initialFormData)
