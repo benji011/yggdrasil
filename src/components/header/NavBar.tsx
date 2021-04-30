@@ -61,6 +61,7 @@ export const NavBar = (props: {
         <div className="navbar-start">
           <div className="navbar-item">
             <Link
+              className="navbar-item-links"
               to={`${user ? '/home' : '/'}`}
               onClick={() => setShowBurgerDropdown(false)}
             >
@@ -68,6 +69,16 @@ export const NavBar = (props: {
                 <i className="fas fa-home" /> Home
               </h4>
             </Link>
+            {user && (
+              <Link
+                to="/dashboard"
+                onClick={() => setShowBurgerDropdown(false)}
+              >
+                <h4>
+                  <i className="fas fa-tachometer-alt" /> Your chatrooms
+                </h4>
+              </Link>
+            )}
           </div>
           <div className="navbar-item">
             {user && (

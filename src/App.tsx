@@ -9,6 +9,7 @@ import '~/assets/css/App.css'
 import { Chatroom } from '~/components/chatroom/Chatroom'
 import { Footer } from '~/components/footer/Footer'
 import { NavBar } from '~/components/header/NavBar'
+import { Dashboard } from '~/components/home/Dashboard'
 import { Home } from '~/components/home/Home'
 import { Landing } from '~/components/home/Landing'
 import { Modal } from '~/components/home/Modal'
@@ -34,6 +35,7 @@ function App() {
     title: '',
     id: '',
     description: '',
+    author: '',
   })
   const [showModal, setShowModal] = useState(false)
   return (
@@ -59,6 +61,11 @@ function App() {
         {user ? <Home /> : <Landing />}
       </Route>
       <Route path="/home">{user ? <Home /> : <Login auth={auth} />}</Route>
+      <Route path="/dashboard">
+        {user && (
+          <Dashboard firestore={firestore} setThreadData={setThreadData} />
+        )}
+      </Route>
       {user && (
         <Switch>
           <Route
