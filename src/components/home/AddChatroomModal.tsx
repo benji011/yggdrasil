@@ -12,7 +12,7 @@ import { Input } from '~/components/common/Input'
  * @param props
  * @returns
  */
-export const Modal = (props: {
+export const AddChatroomModal = (props: {
   user: firebase.User | undefined | null
   showModal: boolean
   setShowModal: Function

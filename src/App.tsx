@@ -9,10 +9,10 @@ import '~/assets/css/App.css'
 import { Chatroom } from '~/components/chatroom/Chatroom'
 import { Footer } from '~/components/footer/Footer'
 import { NavBar } from '~/components/header/NavBar'
+import { AddChatroomModal } from '~/components/home/AddChatroomModal'
 import { Dashboard } from '~/components/home/Dashboard'
 import { Home } from '~/components/home/Home'
 import { Landing } from '~/components/home/Landing'
-import { Modal } from '~/components/home/Modal'
 import { Login } from '~/components/login/Login'
 
 const app: firebase.app.App = firebase.initializeApp({
@@ -50,7 +50,7 @@ function App() {
             setShowModal={setShowModal}
           />
         </header>
-        <Modal
+        <AddChatroomModal
           user={user}
           showModal={showModal}
           setShowModal={setShowModal}

@@ -30,3 +30,7 @@
 .grouped-buttons {
   justify-content: center !important;
 }
+
+.modal-img {
+  max-width: 400px;
+}
