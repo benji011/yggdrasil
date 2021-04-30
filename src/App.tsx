@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -37,7 +37,39 @@ function App() {
     description: '',
     author: '',
   })
+  const [userDoc, setUserDoc] = useState({
+    uid: '',
+    chatrooms: 0,
+    email: '',
+    isDisabled: false,
+    name: '',
+    reasonForBan: '',
+  })
   const [showModal, setShowModal] = useState(false)
+
+  /**
+   * Get user data to check if this user is either banned or has added a lot of chatrooms
+   */
+  const getUserData = async (userId: string) => {
+    const userDataRef: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> = firestore
+      .collection('users')
+      .doc(userId)
+    const doc: firebase.firestore.DocumentData = await userDataRef.get()
+    if (doc) {
+      setUserDoc(doc.data())
+    }
+  }
+
+  /**
+   * Called as default 'componentDidMount function'
+   */
+  useEffect(() => {
+    if (user?.uid) {
+      getUserData(user?.uid)
+    }
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <Router>
       <div className="App">
@@ -45,6 +77,7 @@ function App() {
           <NavBar
             user={user}
             auth={auth}
+            userDoc={userDoc}
             firestore={firestore}
             setThreadData={setThreadData}
             setShowModal={setShowModal}

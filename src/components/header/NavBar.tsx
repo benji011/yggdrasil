@@ -10,11 +10,12 @@ import { Threads } from '~/components/header/Threads'
 export const NavBar = (props: {
   firestore: firebase.firestore.Firestore
   user: firebase.User | null | undefined
+  userDoc: firebase.firestore.DocumentData
   auth: firebase.auth.Auth
   setThreadData: Function
   setShowModal: Function
 }) => {
-  const { firestore, user, auth, setThreadData, setShowModal } = props
+  const { firestore, user, auth, userDoc, setThreadData, setShowModal } = props
   const [showBurgerDropdown, setShowBurgerDropdown] = useState(false)
 
   /**
@@ -35,6 +36,7 @@ export const NavBar = (props: {
         <div className="buttons header-buttons header-drop-down">
           {user && (
             <Threads
+              userDoc={userDoc}
               firestore={firestore}
               setThreadData={setThreadData}
               setShowModal={setShowModal}

@@ -9,11 +9,12 @@ import { IThread } from '~/models/IThread'
 import { scrollToBottom } from '~/utils/helper'
 
 export const Threads = (props: {
+  userDoc: firebase.firestore.DocumentData
   firestore: firebase.firestore.Firestore
   setThreadData: Function
   setShowModal: Function
 }) => {
-  const { firestore, setThreadData, setShowModal } = props
+  const { userDoc, firestore, setThreadData, setShowModal } = props
   const threadsRef: firebase.firestore.CollectionReference = firestore.collection(
     'threads'
   )
@@ -48,6 +49,16 @@ export const Threads = (props: {
     setShowThreads(!showThreads)
   }
 
+  /**
+   * Get number of rooms left
+   *
+   * @returns
+   */
+  const getNoOfRoomsLeft = () => {
+    const MAX_NO_OF_CHATROOMS: number = 2
+    return userDoc.chatrooms - MAX_NO_OF_CHATROOMS
+  }
+
   return (
     <div className={`nav-window dropdown ${showThreads ? 'is-active' : ''}`}>
       <div className="dropdown-trigger">
@@ -68,13 +79,15 @@ export const Threads = (props: {
           <div className="dropdown-item">
             <p>
               <i className="fas fa-info-circle" /> You can create up to{' '}
-              <strong>max 2 rooms</strong>.
+              <strong>{`${getNoOfRoomsLeft()} `}</strong>
+              rooms .
             </p>
             <hr className="dropdown-divider" />
             <Button
               className="button is-primary"
               text="Add"
               icon="fas fa-plus-square"
+              isDisabled={getNoOfRoomsLeft() === 0}
               onClick={addNewChatroom}
             />
           </div>
