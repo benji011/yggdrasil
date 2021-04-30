@@ -47,6 +47,7 @@ export const AddChatroomModal = (props: {
         seconds: parseInt((new Date().getTime() / 1000).toString()),
       },
       author: user?.uid,
+      isLocked: false,
     })
     setShowModal(false)
     setFormData(initialFormData)
