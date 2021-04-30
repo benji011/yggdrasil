@@ -33,4 +33,4 @@ yarn && yarn start
 
 - Unit & E2E tests
 
-As this is a PoC app, I haven't really begun adding tests (yet). If you would like to contribute, feel free to send a pull request :)
+As this is an app I build for fun, I haven't really begun adding tests (yet). If you would like to contribute, feel free to send a pull request :)
