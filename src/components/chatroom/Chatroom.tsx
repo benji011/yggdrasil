@@ -95,8 +95,10 @@ export const Chatroom = (props: {
             <div className="control is-expanded">
               <input
                 className="input send-message-input"
-                placeholder="type your message here"
-                value={threadData.isLocked ? 'Locked' : formMessage}
+                placeholder={
+                  threadData.isLocked ? 'Locked' : 'Type your message here'
+                }
+                value={formMessage}
                 onChange={(e) => setFormMessage(e.target.value)}
                 disabled={threadData.isLocked ? true : false}
               />
