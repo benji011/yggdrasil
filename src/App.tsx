@@ -49,6 +49,7 @@ function App() {
           />
         </header>
         <Modal
+          user={user}
           showModal={showModal}
           setShowModal={setShowModal}
           firestore={firestore}
