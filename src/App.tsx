@@ -36,6 +36,7 @@ function App() {
     id: '',
     description: '',
     author: '',
+    isLocked: false,
   })
   const [showModal, setShowModal] = useState(false)
   return (
@@ -63,7 +64,11 @@ function App() {
       <Route path="/home">{user ? <Home /> : <Login auth={auth} />}</Route>
       <Route path="/dashboard">
         {user && (
-          <Dashboard firestore={firestore} setThreadData={setThreadData} />
+          <Dashboard
+            user={user}
+            firestore={firestore}
+            setThreadData={setThreadData}
+          />
         )}
       </Route>
       {user && (

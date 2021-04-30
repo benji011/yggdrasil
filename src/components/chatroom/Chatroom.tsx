@@ -87,19 +87,6 @@ export const Chatroom = (props: {
             <Message key={message.id} message={message} auth={auth} />
           ))}
       </div>
-      {/* <form onSubmit={onSubmit}>
-        <input
-          className="textarea is-primary"
-          type="text"
-          placeholder="type your message here"
-          value={formMessage}
-          onChange={(e) => setFormMessage(e.target.value)}
-        />
-        <Button
-          className="button is-primary"
-          icon="far fa-paper-plane send-icon"
-        />
-      </form> */}
       <div className="container has-text-centered">
         <form onSubmit={onSubmit} className="send-message-form">
           <div className="field has-addons">
@@ -107,14 +94,17 @@ export const Chatroom = (props: {
               <input
                 className="input send-message-input"
                 placeholder="type your message here"
-                value={formMessage}
+                value={threadData.isLocked ? 'Locked' : formMessage}
                 onChange={(e) => setFormMessage(e.target.value)}
+                disabled={threadData.isLocked ? true : false}
               />
             </div>
             <div className="control">
               <Button
                 className="button is-primary send-message-button"
                 icon="far fa-paper-plane send-icon"
+                onClick={onSubmit}
+                isDisabled={true}
               />
             </div>
           </div>

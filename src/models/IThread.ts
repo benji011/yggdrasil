@@ -7,4 +7,5 @@ export interface IThread {
   title: string
   description: string
   author: string
+  isLocked: boolean
 }

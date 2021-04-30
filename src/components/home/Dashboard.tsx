@@ -11,10 +11,11 @@ import { IThread } from '~/models/IThread'
 import { scrollToBottom } from '~/utils/helper'
 
 export const Dashboard = (props: {
+  user: firebase.User
   firestore: firebase.firestore.Firestore
   setThreadData: Function
 }) => {
-  const { firestore, setThreadData } = props
+  const { user, firestore, setThreadData } = props
   const [showDeleteChatroomModal, setShowDeleteChatroomModal] = useState(false)
   const [threadToBeDeleted, setThreadToBeDeleted] = useState({
     createdAt: { nanoseconds: 0, seconds: 0 },
@@ -22,11 +23,13 @@ export const Dashboard = (props: {
     id: '',
     description: '',
     author: '',
+    isLocked: false,
   })
   const threadsRef: firebase.firestore.CollectionReference = firestore.collection(
     'threads'
   )
   const threadsQuery: firebase.firestore.Query<firebase.firestore.DocumentData> = threadsRef
+    .where('author', '==', user.uid)
     .orderBy('createdAt')
     .limit(25)
   const [threads]: [
@@ -94,6 +97,7 @@ export const Dashboard = (props: {
                   <div className="card-content">
                     <div className="content" />
                     <p>{thread.description}</p>
+
                     <div className="field is-grouped dashboard-grouped-buttons">
                       <p className="control">
                         <Link
