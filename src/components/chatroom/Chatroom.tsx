@@ -1,5 +1,5 @@
 import firebase from 'firebase/app'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState, useEffect } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { useParams } from 'react-router-dom'
 
@@ -32,6 +32,10 @@ export const Chatroom = (props: {
   const [formMessage, setFormMessage] = useState('')
   const { id } = useParams<{ id: string }>()
 
+  useEffect(()=> {
+    scrollToBottom()
+  },[messages])
+  
   /**
    * Send message by adding to the 'messages' collection over
    * on firebase
@@ -58,7 +62,6 @@ export const Chatroom = (props: {
         photoURL,
       })
     }
-    scrollToBottom()
   }
 
   /**
