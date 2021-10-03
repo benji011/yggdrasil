@@ -29,8 +29,15 @@ yarn && yarn start
 
 3. Access http://localhost:3000
 
+
+## Contributing
+
+Please see [CONTRIBUTING.md](docs/CONTRIBUTING.md)
+
+## Testing
+- As this is an app I built for fun, I haven't really begun adding tests (yet). If you would like to contribute (refer to [CONTRIBUTING.md](docs/CONTRIBUTING.md)), feel free to send a pull request :)
+- Manual testing should be done locally. Please see [Firebase settings](./docs/FIREBASE_SETTINGS.md) on how to configure the app on the backend.
+
 ## TODO
 
-- Unit & E2E tests
-
-As this is an app I build for fun, I haven't really begun adding tests (yet). If you would like to contribute, feel free to send a pull request :)
+- Add unit & E2E tests
