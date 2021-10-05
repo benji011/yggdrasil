@@ -17,12 +17,14 @@ export const Chatroom = (props: {
   threadData: IThread
 }) => {
   const { firestore, auth, threadData } = props
+  const { id } = useParams<{ id: string }>()
   const messagesRef: firebase.firestore.CollectionReference = firestore.collection(
     'messages'
   )
   const query: firebase.firestore.Query<firebase.firestore.DocumentData> = messagesRef
     .orderBy('createdAt')
     .limit(25)
+    .where("threadId", "==", id)
   const [messages]: [
     IMessage[] | undefined,
     boolean,
@@ -30,7 +32,6 @@ export const Chatroom = (props: {
   ] = useCollectionData(query, { idField: 'id' })
 
   const [formMessage, setFormMessage] = useState('')
-  const { id } = useParams<{ id: string }>()
 
   useEffect(()=> {
     scrollToBottom()
@@ -64,17 +65,6 @@ export const Chatroom = (props: {
     }
   }
 
-  /**
-   * Return filtered messages based on thread
-   *
-   * @param message
-   */
-  const getFilteredMessages = (messages: IMessage[]) => {
-    return messages.filter(function (message: IMessage) {
-      return message?.threadId === id
-    })
-  }
-
   return (
     <div>
       <section className="hero is-primary is-small">
@@ -86,9 +76,8 @@ export const Chatroom = (props: {
       </section>
       <div id="messages" className="messages-window">
         {messages &&
-          getFilteredMessages(
-            (messages as unknown) as IMessage[]
-          ).map((message: IMessage) => (
+        ((messages as unknown) as IMessage[])
+          .map((message: IMessage) => (
             <Message key={message.id} message={message} auth={auth} />
           ))}
       </div>
@@ -103,7 +92,7 @@ export const Chatroom = (props: {
                 }
                 value={formMessage}
                 onChange={(e) => setFormMessage(e.target.value)}
-                disabled={threadData.isLocked ? true : false}
+                disabled={threadData.isLocked}
               />
             </div>
             <div className="control">
