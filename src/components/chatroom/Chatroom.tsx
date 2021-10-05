@@ -25,12 +25,11 @@ export const Chatroom = (props: {
     .orderBy('createdAt')
     .limit(25)
     .where("threadId", "==", id)
-  const [messages,, err]: [
+  const [messages]: [
     IMessage[] | undefined,
     boolean,
     firebase.FirebaseError | undefined
   ] = useCollectionData(query, { idField: 'id' })
-  if (err) console.error(err)
 
   const [formMessage, setFormMessage] = useState('')
 

@@ -40,8 +40,6 @@ Official documentation for index creation can be found [here](https://firebase.g
    3. Choose the "Collection" query scope
 5. Click `Create index` and wait for it to build
 
-An alternative method to build this index, is entering any chatroom and clicking the firebase error that might appear in the console. (This method is not recommeded)
-
 ## References
 
 - [Add Firebase to your JavaScript project](https://firebase.google.com/docs/web/setup)
